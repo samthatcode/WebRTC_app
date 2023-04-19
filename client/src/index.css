@@ -1,17 +1,20 @@
 body {
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.3)),
-    url(https://i.pinimg.com/originals/8f/14/57/8f14578ef69a4c53352955d1e072eda6.png);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+  
+   background-image: linear-gradient(to right, #667eea87, #9f7aea, #667eea87);
 }
 
 * {
   margin: 0;
   padding: 0;
 }
+
+.message {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
 
 @tailwind base;
 @tailwind components;

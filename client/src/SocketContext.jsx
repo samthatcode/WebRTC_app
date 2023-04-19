@@ -24,7 +24,7 @@ const ContextProvider = ({ children }) => {
         navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             .then((currentStream) => {
                 setStream(currentStream);
-                console.log(myVideo)
+                // console.log(myVideo)
                 myVideo.current.srcObject = currentStream;
 
             });

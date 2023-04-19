@@ -6,7 +6,7 @@ import { SocketContext } from "../SocketContext";
 
 const useStyles = makeStyles((theme) => ({
   video: {
-    width: "550px",
+    width: "350px",
     [theme.breakpoints.down("xs")]: {
       width: "300px",
     },
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: "10px",
-    border: "2px solid black",
+    border: "2px solid grey",
     margin: "10px",
   },
 }));
@@ -33,7 +33,7 @@ const VideoPlayer = () => {
     <Grid container className={classes.gridContainer}>
       {stream && (
         <Paper className={classes.paper}>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={12}>
             <Typography variant="h5" gutterBottom>
               {name || "Name"}
             </Typography>
@@ -49,7 +49,7 @@ const VideoPlayer = () => {
       )}
       {callAccepted && !callEnded && (
         <Paper className={classes.paper}>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={12}>
             <Typography variant="h5" gutterBottom>
               {call.name || "Name"}
             </Typography>
