@@ -31,5 +31,18 @@ io.on('connection', (socket) => {
     socket.on("answerCall", (data) => {
         io.to(data.to).emit('callAccepted', data.signal);
     })
+    
 })
+
+io.on('connection', (socket) => {
+    console.log('User connected');
+  
+    socket.on('message', (msg) => {
+      io.emit('message', msg);
+    });
+  
+    socket.on('disconnect', () => {
+      console.log('User disconnected');
+    });
+  });
 server.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
