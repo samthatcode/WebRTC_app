@@ -17,6 +17,7 @@ const Chat = () => {
   const handleMessage = (msg) => {
     setMessages((prevMessages) => [...prevMessages, msg]);
   };
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     if (message.trim()) {
