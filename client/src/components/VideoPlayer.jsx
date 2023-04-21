@@ -1,78 +1,41 @@
 import React, { useContext } from "react";
-import { Grid, Typography, Paper } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-
 import { SocketContext } from "../SocketContext";
 
-const useStyles = makeStyles((theme) => ({
-  video: {
-    width: "350px",
-    [theme.breakpoints.down("xs")]: {
-      width: "300px",
-    },
-  },
-  gridContainer: {
-    justifyContent: "center",
-    [theme.breakpoints.down("xs")]: {
-      flexDirection: "column",
-    },
-  },
-  paper: {
-    padding: "10px",
-    border: "2px solid grey",
-    margin: "10px",
-  },
-}));
-
 const VideoPlayer = () => {
-  const {
-    name,
-    callAccepted,
-    myVideo,
-    userVideo,
-    callEnded,
-    stream,
-    call,
-    
-  } = useContext(SocketContext);
-
-  const classes = useStyles();
+  const { name, callAccepted, myVideo, userVideo, callEnded, stream, call } =
+    useContext(SocketContext);
 
   return (
-    <Grid container className={classes.gridContainer}>
+    <div className="container mx-auto flex flex-col items-center md:flex-row md:justify-center">
       {stream && (
-        <Paper className={classes.paper}>
-          <Grid item xs={12} md={12}>
-            <Typography variant="h5" gutterBottom>
-              {name || "Name"}
-            </Typography>
+        <div className="bg-white p-4 border-2 border-gray-400 m-4 rounded-lg">
+          <div className="w-full">
+            <h5 className="text-lg mb-2">{name || "Name"}</h5>
             <video
               playsInline
               muted
               ref={myVideo}
               autoPlay
-              className={classes.video}
+              className="w-80 md:w-96"
             />
-          </Grid>
-        </Paper>
+          </div>
+        </div>
       )}
-     
+
       {callAccepted && !callEnded && (
-        <Paper  className={classes.paper}>
-          <Grid item xs={12} md={12}>
-            <Typography variant="h5" gutterBottom>
-              {call.name || "Name"}
-            </Typography>
+        <div className="bg-white p-4 border-2 border-gray-400 m-4 rounded-lg">
+          <div className="w-full">
+            <h5 className="text-lg mb-2">{call.name || "Name"}</h5>
             <video
               playsInline
               ref={userVideo}
               autoPlay
-              className={classes.video}
+              className="w-80 md:w-96"
             />
-          </Grid>
-        </Paper>
+          </div>
+        </div>
       )}
-    </Grid>
+    </div>
   );
 };
 

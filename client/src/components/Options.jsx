@@ -1,126 +1,69 @@
 import React, { useState, useContext } from "react";
-import {
-  Button,
-  TextField,
-  Grid,
-  Typography,
-  Container,
-  Paper,
-} from "@material-ui/core";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import { Assignment, Phone, PhoneDisabled } from "@material-ui/icons";
-import { makeStyles } from "@material-ui/core/styles";
-
 import { SocketContext } from "../SocketContext";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    flexDirection: "column",
-  },
-  gridContainer: {
-    width: "100%",
-    [theme.breakpoints.down("xs")]: {
-      flexDirection: "column",
-    },
-  },
-  container: {
-    width: "600px",
-    margin: "35px 0",
-    padding: 0,
-    [theme.breakpoints.down("xs")]: {
-      width: "80%",
-    },
-  },
-  margin: {
-    marginTop: 20,
-  },
-  padding: {
-    padding: 20,
-  },
-  paper: {
-    padding: "10px 20px",
-    border: "2px solid grey",
-  },
-}));
+import { FiCopy, FiPhone, FiPhoneOff } from "react-icons/fi";
 
 const Options = ({ children }) => {
   const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } =
     useContext(SocketContext);
-  const classes = useStyles();
   const [idToCall, setIdToCall] = useState("");
- 
+
   return (
-    <Container className={classes.container}>
-      <Paper elevation={10} className={classes.paper}>
-        <form
-          className={classes.root}
-          noValidate
-          autoComplete="off"         
-        >
-          <Grid container className={classes.gridContainer}>
-            <Grid item xs={12} md={6} className={classes.padding}>
-              <Typography gutterBottom variant="h6">
-                Username/Name
-              </Typography>
-              <TextField
-                label="Name"
+    <div className="container mx-auto my-8 p-0 w-3/4 md:w-1/2">
+      <div className="bg-white p-8 border-2 border-gray-400 rounded-lg">
+        <form className="flex flex-col">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
+            <div>
+              <h6 className="text-lg mb-2">Username/Name</h6>
+              <input
+              placeholder='Your Name'
+                type="text"
+                className="border-2 border-gray-300 rounded-lg w-full px-4 py-2"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                fullWidth
-              />             
-              {console.log(me)}
-              <CopyToClipboard text={me} className={classes.margin}>
-                <Button
-                  className="font-bold bg-blue-500 text-stone-50  hover:shadow-md rounded hover:text-stone-200 py-2 px-4 animate-pulse bg-opacity-100"
-                  variant="contained"
-                  // color="primary"
-                  fullWidth
-                  startIcon={<Assignment fontSize="large" />}
-                >
-                  Copy ID
-                </Button>
-              </CopyToClipboard>
-            </Grid>
-            <Grid item xs={12} md={6} className={classes.padding}>
-              <Typography gutterBottom variant="h6">
-                Make a call
-              </Typography>
-              <TextField
-                label="ID to call"
+              />
+              <button
+                className=" font-bold bg-blue-500 text-white hover:shadow-md rounded hover:text-gray-200 py-2 px-4  bg-opacity-100 w-full flex items-center justify-center mt-4 "
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigator.clipboard.writeText(me);
+                }}
+              >
+                <FiCopy className="mr-2 text-lg" /> Copy ID
+              </button>
+            </div>
+            <div>
+              <h6 className="text-lg mb-2">Make a call</h6>
+              <input
+              placeholder='Paste ID'
+                type="text"
+                className="border-2 border-gray-300 rounded-lg w-full px-4 py-2"
                 value={idToCall}
                 onChange={(e) => setIdToCall(e.target.value)}
-                fullWidth
               />
               {callAccepted && !callEnded ? (
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  startIcon={<PhoneDisabled fontSize="large" />}
-                  fullWidth
+                <button
+                  className="mt-4 bg-red-500 text-white hover:shadow-md rounded hover:text-gray-200 py-2 px-4 w-full flex items-center justify-center"
                   onClick={leaveCall}
-                  className={classes.margin}
                 >
-                  End Call
-                </Button>
+                  <FiPhoneOff className="mr-2 text-lg" /> End Call
+                </button>
               ) : (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  startIcon={<Phone fontSize="large" />}
-                  fullWidth
-                  onClick={() => callUser(idToCall)}
-                  className={classes.margin}
+                <button
+                  className="mt-4 bg-blue-500 text-white hover:shadow-md rounded hover:text-gray-200 py-2 px-4 w-full flex items-center justify-center"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    callUser(idToCall);
+                  }}
                 >
-                  Call
-                </Button>
+                  <FiPhone className="mr-2 text-lg" /> Call
+                </button>
               )}
-            </Grid>
-          </Grid>
+            </div>
+          </div>
         </form>
         {children}
-      </Paper>
-    </Container>
+      </div>
+    </div>
   );
 };
 

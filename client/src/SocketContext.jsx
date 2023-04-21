@@ -39,7 +39,6 @@ const ContextProvider = ({ children }) => {
     socket.on("callAccepted", (signal) => {
       console.log("Call Answered");
       setCallAccepted(true);
-      
     });
 
     // Update the "callEnded" state when a call is ended

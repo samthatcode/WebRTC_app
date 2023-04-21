@@ -9,7 +9,7 @@ const Notifications = () => {
   return (
     <>
       {call.isReceivingCall && !callAccepted && (
-        <div className="flex justify-around ">
+        <div className="flex justify-around mt-4 gap-4">
           <h1 className="bg-purple-700 text-white font-bold py-2 px-4 rounded animate-bounce  bg-opacity-100">
             {call.name} is calling:
           </h1>
