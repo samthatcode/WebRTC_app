@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:5000");
+// const socket = io("http://localhost:5000");
+const socket = io("https://video-chat-app-m5ad.onrender.com");
+
 
 const Chat = () => {
   const [message, setMessage] = useState("");
@@ -28,7 +30,7 @@ const Chat = () => {
 
   return (
     <>
-      <div className=" mt-4 overflow-auto h-24">
+      <div className=" mt-4 overflow-auto h-48 ">
         {messages.map((msg, index) => (
           <div
             key={index}
