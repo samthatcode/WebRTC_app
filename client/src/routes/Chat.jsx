@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { io } from "socket.io-client";
+import  io  from "socket.io-client";
+import '../index.css';
 
 // const socket = io("http://localhost:5000");
-const socket = io("https://video-chat-app-m5ad.onrender.com");
+const socket = io("http://localhost:8000");
 
 
 const Chat = () => {
@@ -30,27 +31,27 @@ const Chat = () => {
 
   return (
     <>
-      <div className=" mt-4 overflow-auto h-48 ">
+      <div className="message-container">
         {messages.map((msg, index) => (
           <div
             key={index}
-            className="bg-blue-900 text-white rounded-lg px-4 py-2 mx-2 mb-2 message w-max max-w-md whitespace-pre-wrap block"
+            className="message"
           >
             {msg}
           </div>
         ))}
       </div>
-      <form onSubmit={handleSubmit} className="flex flex-col md:mb-3 mb-4 mx-8 md:flex-row items-center ">
+      <form onSubmit={handleSubmit} className="form-wrapper">
         <input
           type="text"
           placeholder="Type a message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="flex-grow rounded-lg p-2 w-full md:w-auto shadow-lg"
+          className="input-field"
         />
         <button
           type="submit"
-          className="bg-blue-500 text-white rounded-lg px-4 py-2 ml-0 md:ml-2 mt-2 md:mt-0 font-medium hover:bg-blue-700 shadow-md "
+          className="submit-button"
         >
           Send
         </button>
