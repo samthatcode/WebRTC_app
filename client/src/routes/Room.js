@@ -27,7 +27,7 @@ const Video = (props) => {
         props.peer.on("stream", stream => {
             ref.current.srcObject = stream;
         })
-    }, []);
+    }, [props.peer]);
 
     return (
         <StyledVideo playsInline autoPlay ref={ref} />
@@ -80,7 +80,7 @@ const Room = (props) => {
                 item.peer.signal(payload.signal);
             });
         })
-    }, []);
+    }, [roomID]);
 
     function createPeer(userToSignal, callerID, stream) {
         const peer = new Peer({
