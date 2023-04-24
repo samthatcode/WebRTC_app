@@ -1,5 +1,5 @@
 [[redirects]]
   from = "/room/*"
-  to = "/room/*"
+  to = "/index.html"
   status = 200
   force = true
