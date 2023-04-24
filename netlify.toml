@@ -1,5 +1,5 @@
 [[redirects]]
   from = "/room/*"
-  to = "https://video-chat-app-m5ad.onrender.com/:splat"
+  to = "/:splat"
   status = 200
   force = true
