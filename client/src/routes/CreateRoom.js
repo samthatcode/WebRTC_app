@@ -22,8 +22,8 @@ const CreateRoom = (props) => {
                 setNotificationMessage(<p style={{ fontSize: '8px', margin: '0' }}>Dear Potential Employer, I would like to bring to your attention that due to technical issues with the host server, a certain feature of the project which is when users joins the room can only be viewed on localhost. I apologize for any inconvenience this may cause, but I assure you that the feature works perfectly on localhost. Thank you for your understanding.</p>);
                 setTimeout(function () {
                     setShowNotification(false);
-                    showMessage();
-                }, 5000);
+                }, 10000);
+                showMessage();
             }, 5000);
         })();
     }, []);
@@ -36,7 +36,7 @@ const CreateRoom = (props) => {
 
     return (
         <>
-            {showNotification && <Notification message={notificationMessage} />}
+            {showNotification && <Notification message={notificationMessage} className="show" />}
             <div className='welcome-div'>
                 <h4>Welcome! Click the button to Create Room</h4>
                 <button onClick={create}>Create room</button>

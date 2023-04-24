@@ -146,9 +146,13 @@ body {
   color: white;
   max-width: 400px;
   word-break: break-word;
-  transition: all 0.3s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
 }
 
+.notification-box.show {
+  opacity: 1;
+}
 
 .notification-box:hover {
   transform: scale(1.05);
