@@ -3,7 +3,7 @@ import  io  from "socket.io-client";
 import '../index.css';
 
 // const socket = io("http://localhost:5000");
-const socket = io("http://localhost:8000");
+const socket = io("https://video-chat-app-m5ad.onrender.com");
 
 
 const Chat = () => {
