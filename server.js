@@ -18,6 +18,7 @@ app.get('/room/:id', (req, res) => {
 
   // Join the room using socket.io
   io.on('connection', socket => {
+    console.log('Connected to the Server:', roomId);
     socket.on("join room", roomID => {
       if (users[roomID]) {
         const length = users[roomID].length;
