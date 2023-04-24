@@ -4,18 +4,8 @@ import CreateRoom from "./routes/CreateRoom";
 import Room from "./routes/Room";
 
 
-function Notification({ message }) {
-  return (
-    <div  className="notification-box">
-      {message}
-    </div>
-  );
-}
-
-
 function App() {
-  const [showNotification, setShowNotification] = useState(false);
-  const [notificationMessage, setNotificationMessage] = useState('');
+  
 
   useEffect(() => {
     (function showMessage() {
@@ -32,7 +22,7 @@ function App() {
 
   return (
     <>
-     {showNotification && <Notification message={notificationMessage} />}
+     
       <BrowserRouter>
         <Switch>
           <Route path="/" exact component={CreateRoom} />

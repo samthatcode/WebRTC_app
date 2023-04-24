@@ -140,30 +140,15 @@ body {
 }
 
 .notification-box {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: gray;
+  background-color: rgb(51, 111, 176);
   padding: 10px;
   border-radius: 5px;
   color: white;
   max-width: 400px;
   word-break: break-word;
-  animation: blink 1s infinite;
   transition: all 0.3s ease-in-out;
 }
 
-@keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 
 .notification-box:hover {
   transform: scale(1.05);
